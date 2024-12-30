@@ -4,16 +4,21 @@ class Program
 {
     static void Main(string[] args)
     {
+        foreach (var arg in args)
+        {
+            if (int.TryParse(arg, out int number))
+            {
+                string result = FizzBuzz(number);
+                Console.WriteLine(result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid input");
+            }
 
-        if (int.TryParse(args[0], out int number))
-        {
-            string result = FizzBuzz(number);
-            Console.WriteLine(result);
         }
-        else
-        {
-            Console.WriteLine("Invalid input");
-        }
+
+
 
     }
 
