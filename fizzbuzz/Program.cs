@@ -1,25 +1,27 @@
-﻿using System;
-
-class Program
+﻿class Program
 {
     static void Main(string[] args)
     {
+
         foreach (var arg in args)
         {
+
+            if (string.IsNullOrEmpty(arg) || arg.Contains("--sort"))
+            {
+                args = [.. args.OrderBy(x => x)];
+                continue;
+            }
             if (int.TryParse(arg, out int number))
             {
+
                 string result = FizzBuzz(number);
                 Console.WriteLine(result);
             }
             else
             {
-                Console.WriteLine("Invalid input");
+                Console.WriteLine($"Invalid input: '{arg}'");
             }
-
         }
-
-
-
     }
 
     static string FizzBuzz(int num)
